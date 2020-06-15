@@ -5,6 +5,4 @@ This repo contains a project for studying some sorting algorithms using the Java
 Currently implemented algorithms:
 1. Selection Sort
 2. Insertion Sort
-
-To be implemented:
-1. Quick Sort
+3. Quick Sort
