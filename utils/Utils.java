@@ -4,18 +4,18 @@ import java.util.Date;
 import java.util.Random;
 
 public class Utils {
-    public static int[] generateArray(int length) {
+    private static int[] generateArray(int length) {
         int[] array = new int[length];
 
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(1000000);
+            array[i] = random.nextInt(length);
         }
 
         return array;
     }
 
-    public static void selectionSort(int[] array) {
+    private static void selectionSort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             int lowestNumberIndex = i;
 
@@ -29,7 +29,7 @@ public class Utils {
         }
     }
 
-    public static void insertionSort(int[] array) {
+    private static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; i++) {
             int j = i;
 
@@ -42,6 +42,34 @@ public class Utils {
         }
     }
 
+    private static int partition(int[] v, int p, int r) {
+        int i = p - 1;
+
+        for (int j = p; j < r; j++) {
+            if (v[j] <= v[r]) {
+                i++;
+                int value = v[j];
+                v[j] = v[i];
+                v[i] = value;
+            }
+        }
+
+        i++;
+        int value = v[r];
+        v[r] = v[i];
+        v[i] = value;
+
+        return i;
+    }
+
+    private static void quickSort(int[] v, int p, int r) {
+        if (p < r) {
+            int q = partition(v, p, r);
+            quickSort(v, p, q - 1);
+            quickSort(v, q + 1, r);
+        }
+    }
+
     public static void testSorting(int length, String algorithm) {
         int[] numbers = generateArray(length);
 
@@ -49,10 +77,11 @@ public class Utils {
 
         if (algorithm == "selection") selectionSort(numbers);
         if (algorithm == "insertion") insertionSort(numbers);
+        if (algorithm == "quick") quickSort(numbers, 0, numbers.length - 1);
 
         long endTime = new Date().getTime();
 
         for (int i: numbers) System.out.println(i);
-        System.out.printf("Time spent: %d", endTime - startTime);
+        System.out.printf("Time spent: %d\n", endTime - startTime);
     }
 }
