@@ -1,5 +1,5 @@
 
-// import utils.Utils;
+import utils.Utils;
 
 /**
  * OrderingApp
@@ -17,5 +17,11 @@ public class OrderingApp {
         // Utils.testSorting(200000, "insertion");
         // Utils.testSorting(500000, "insertion");
         // Utils.testSorting(1000000, "insertion");
+
+        // Quick Sort, test one at a time!
+        // Utils.testSorting(100000, "quick");
+        // Utils.testSorting(200000, "quick");
+        // Utils.testSorting(500000, "quick");
+        // Utils.testSorting(1000000, "quick");
     }
 }
